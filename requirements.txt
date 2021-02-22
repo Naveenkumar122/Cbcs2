@@ -1,0 +1,12 @@
+asgiref==3.3.1
+Django==3.1.5
+django-cors-headers==3.7.0
+djangorestframework==3.12.2
+gunicorn==20.0.4
+mysql-server-has-gone-away==2.0.0
+mysqlclient==2.0.3
+python-dateutil==2.8.1
+pytz==2019.3
+six==1.14.0
+sqlparse==0.4.1
+urllib3==1.25.8
