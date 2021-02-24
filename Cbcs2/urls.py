@@ -20,4 +20,5 @@ from Admin import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.Authenticate, name='login'),
-]
+    path('stud/', views.Manage_student)
+    ]
