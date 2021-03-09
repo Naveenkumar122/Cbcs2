@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- no cache headers -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- end no cache headers -->
+
+<head>
+    <title>The American College</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/login_css/bootstrap.min1.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main1.css' %}">
+    <link href="{% static 'plugins/font-awesome/css/font1.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div class="js">
+        <span id="preloader" style="display:none;">
+            <div id="preloader123"></div>
+        </span>
+    </div>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('{% static 'images/amc.jpg' %}');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="/login/" method="POST">
+                     {% csrf_token %}
+                    <span class="login100-form-logo">
+                        <img src="{% static 'images/aclogin_logofinal.png' %}" class="img-responsive" alt="Cinque Terre" width="133"
+                            height="129">
+                    </span>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+                    <select name="sel_usertype" id="sel_usertype" class="form-control selectpicker"
+                        style="margin-bottom:10px;">
+                        <!--<option value=2 selected>Staff</option>-->
+                        <option value=3 selected>Admin</option>
+                        <!--<option value=>-->
+                    </select>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username" id="log_user">
+                        <font style="color:white"><img class="avatar" src="{% static 'images/login1.svg' %}" alt=""
+                                style="width: 20px;position: absolute;top: 30%;"></font>
+                                    
+                         <input class="input100" type="text" name="user_name" id="user_name" placeholder="Username"
+                            tabindex="1" value="" autocomplete="off"> 
+                         <span class="focus-input100" ></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password" id='log_pass'>
+                        <font style="color:white"><img class="avatar" src="{% static 'images/lock1.svg' %}" alt=""
+                                style="width: 20px;position: absolute;top: 20%;"></font>
+                         <input class="input100" type="password" name="pswd" id="pswd" placeholder="Password"
+                            tabindex="2" autocomplete="off"> 
+                       <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <span id='err_msg'></span>
+                    </div>
+
+                    <div class="btn btn-group" id="log_btn">
+                        <button type="" class="login100-form-btn" name="submit_frm" id="submit_frm" tabindex="3">
+                             Login
+                        </button>
+                    </div>
+                    <span id='loadingImg' style="margin-bottom:10px;display:none;">
+                        <img src="{%static 'images/loadingImg.gif' %}"></span>
+                    <div class="btn btn-group" id="log_btn1">
+                        <button type="button" class="login100-form-btn" name="ForgetButton" id="ForgetButton"
+                            tabindex="4">Forget</button>
+                    </div>
+                    <div id="re_se">
+                        <div class="btn btn-group" id="resent" style="display:none">
+                            <button type="button" class="login100-form-btn" name="submit_frm_re" id="submit_frm_re"
+                                tabindex="3">Resend OTP
+                            </button>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input" style="border:0px;text-align:center">
+                        <a href="index.php?m=1&page=forgot">
+                            <font color='white' size=4><b>
+                                    <div id="display"></div>
+                                </b></font>
+                        </a>
+                        <font color='white' size=4><b>
+                                <div id="display1"></div>
+                            </b></font></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'validate_api.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js'%}"></script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript">
+        document.getElementById("ForgetButton").onclick = function () {
+            location.href = "forgotPassword.php";
+        };
+    </script>
+
+</body>
+</html>

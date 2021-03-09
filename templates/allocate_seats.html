@@ -1,0 +1,432 @@
+{% load static %}
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<!-- no cache headers -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- end no cache headers -->
+<title>The American College</title>
+<link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+<link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />  
+<link href="{% static 'css/themes/all-themes.css' %}" rel="stylesheet" />
+<link href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/bootstrap/css/font_style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/font-awesome/css/font1.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'jquery-ui.css' %}" rel="stylesheet" /> -->
+<link href="{% static 'css/themes/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/themes/materialize.css' %}" rel="stylesheet">
+<link href="{% static 'css/themes/all-themes.css' %}" rel="stylesheet" />
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap-social/bootstrap-social.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap/dist/css/bootstrap-select.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+
+
+<link href="{% static 'dist/css/sb-admin-2.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'style.css" rel="stylesheet' %}" type="text/css">
+<link href="{% static 'plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' %}" rel="stylesheet" /> 
+  
+<script>
+function checkTime(i)
+{
+    if (i < 10) {i = "0" + i}; 
+    return i;
+}
+function firstCap(str)
+{
+  var returnVar='';
+  var strSplit=str.split(' ');
+ for(var i=0;i<strSplit.length;i++){
+     returnVar=returnVar+strSplit[i].substring(0,1).toUpperCase()+strSplit[i].substring(1).toLowerCase() +' ';
+     }
+     return returnVar;
+    }
+</script>
+<style>
+.WebContainer{
+    width: 100%;
+    height: auto;
+}
+.articles{
+    width:90%; /*Takes 90% width from WebContainer*/
+    height: auto;
+    margin: auto;
+
+} 
+</style>
+</head>
+
+<body class="theme-red">
+      
+
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a href="javascript:void(0);" class="navbar-brand" style="padding-top: 0px;"><img
+                        src="{% static 'includes/college logo/aclogo.png' %}" style="width:50px;height:50px;"> </a>
+                <a style="color:#fff;float: left;height: 50px;padding: 15px 15px;font-size: 20px;line-height: 20px;font-weight:bold;  text-decoration: none;font-family: times New roman;text-transform: uppercase;"
+                    href="welcome.php">The American College</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a id="student_anchor" class="" style="font-size:14px;font-family:Times New Roman;"><b>
+                                &nbsp;&nbsp; [ {{username}} ]</b></a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="" style="font-size:14px;font-family:Times New Roman;"><b></b></a>&nbsp;&nbsp;
+                    </li>
+                    <li class="dropdown">
+                        <a id="txt" class=""
+                            style="font-size:14px;font-family:Times New Roman;font-weight:bold"><b></b></a>&nbsp;&nbsp;
+                    </li>
+                    <li class="dropdown">
+                        <a href="includes/logout.php" style="padding-top: 0px;">
+                            <img height="25px" title="LOGOUT" src="{% static 'images/arrow.png' %}" %>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar" style="width:250px;position:fixed">
+            <!-- User Info -->
+                 <div class="user-info" style="text-align:center;font-weight:bold;font-family:Times New Roman;font-size:13px;padding-top:40px">
+                 <div class="image" style="text-align:center;padding-bottom:5px;">
+                  <!-- will open after forget and reset password added
+                  <img src="includes/all/<?php echo $myusername; ?>.jpg" width="70" height="70" style="margin-bottom:20px;" alt="User" />-->
+                <img src="{% static 'includes/staff_images/user.png' %}" width="70" height="70" style="margin-bottom:20px;" alt="User" />
+                </div>
+                <div class="info-container">
+                    
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-bottom :10px">
+                   &nbsp;&nbsp;{{username}}</div><div class="email"></div></div>
+            </div>
+            <div class="menu">
+                <ul class="list" sstyle="overflow: hidden; width: auto; height: 376px;">
+                     <li class="active">
+                    </li>
+                    <li class="activeo">
+                        <a href="javascript:void(0)" class=" menu-toggle">
+                           <span>Manage Student Information</span>
+                        </a>
+                   <ul class="ml-menu">
+                     <li>
+                            <a  href="{% url 'addStudent' %}">Add Student</a>
+                            <a  href="/edit_student/">Edit Student</a>
+                            <!--<button onclick="cbcsFunction()">Register</button>-->
+                    </li> 
+                </ul>
+
+                 <li class="activeo">
+                        <a href="javascript:void(0)" class=" menu-toggle">
+                           <span>Course</span>
+                        </a>
+                        <ul class="ml-menu">
+                        <li>
+                            <a href="/course/" href="javascript:void(0)">Course Add,Edit,Delete</a>
+                            <a id="#">Course Image Add,Edit,Delete</a>
+                            <!--<button onclick="cbcsFunction()">Register</button>-->
+                        </li>    
+                        </ul>
+                 </li>
+                 <li class="activeo">
+                     <a href="javascript:void(0)" class="menu-toggle"> <span>Allocate seats</span> </a>
+                     <ul class="ml-menu">
+                        <li>
+                            <a href="/addSeats/" href="javascript:void(0)">Add seats</a>
+                        </li>    
+                        </ul>
+                 </li>
+
+                 <li class="activeo">
+                        <a href="javascript:void(0)" class=" menu-toggle">
+                           <span>Report</span>
+                        </a>
+                             <ul class="ml-menu">
+                            <li>
+                            <a  href="/live-report/">Live Report</a>
+                            <a id="Report_By_Batch" href="javascript:void(0)">Get Report by batch</a>
+                            <a id="Report_By_Course" href="javascript:void(0)">Get Report by course</a>
+                            
+                            <!--<button onclick="cbcsFunction()">Register</button>-->
+                            </li>   
+                        </ul>
+                </li>
+                <li class="activeo">
+                        <a href="javascript:void(0)" class=" menu-toggle">
+                           <span>Site Setting</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                            <a id="Change_Pass">Change Password</a>
+                            <a id="/site-settings/">Activate/Deactivate Site</a>
+                            <!--<button onclick="cbcsFunction()">Register</button>-->
+                            </li>   
+                        </ul>
+                </li>
+    </section>
+  
+
+    <section class="content">
+        <div class="container-fluid">
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Allocate Seats</div>
+                            <div class="container-fluid">
+                           
+                                <form method="POST" action="/search-seats/">
+                                    {% for message in messages %}                 
+                                       <h3 class="text text-center text-danger"><strong>{{ message }}</strong></h3> 
+                                    {% endfor %}
+                                    {% csrf_token %}
+                                    <div class="text-right">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="search" placeholder="Search course code..." />
+                                        <input type="submit" value="search" class="btn btn-primary" />
+                                    </div>
+                                    </div>
+                                </form>
+                        <div class="text-center">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="id" value="{{course.id}}" hidden/>
+                        
+                                <div class="form-group">
+                                    <label>Course Code</label>
+                                    <select class="form-control" required name="courseCode">
+                                        {% for course in courses %}                                         
+                                             <option value="{{course.id}}">{{  course.courseCode  }}</option>                                         
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label>Seats</label>
+                                    <input type="number" name="seats" class="form-control"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label></label>
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="text-center">
+                        <div class="table-responsive md-4 mt-4">
+                            <table class="table table-striped">
+                                 <thead>
+                                     <tr>
+                                         <td>Course code</td>
+                                         <td>Seats</td>
+                                         <td>#</td>
+                                     </tr>
+                                 </thead>
+                                <tbody>
+                                    {% if course %}
+                                    <tr>
+                                        <td>{{course.courseCode}}</td>
+                                        <td>{{course.seats}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="/edit_seats/{{course.id}}" class="btn btn-primary">Edit&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                                <a href="/delete_seats/{{course.id}}" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    {% for course in courses %}
+                                    {% if course.seats != 0 %}
+                                    <tr>
+                                        <td>{{course.courseCode}}</td>
+                                        <td>{{course.seats}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="/edit_seats/{{course.id}}" class="btn btn-primary">Edit&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                                <a href="/delete_seats/{{course.id}}" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                        </div>
+                        </div>
+                        <style>
+    
+                        </style>
+    
+                    </div>
+                </div>
+            </div>
+    
+    </section>
+    <!-- ############ script #######-->
+
+    <!-- Jquery Core Js -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap Core Js -->
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="{% static 'plugins/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="{% static 'plugins/jquery-countto/jquery.countTo.js' %}"></script>
+    <!-- Morris Plugin Js -->
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.js' %}"></script>
+    <link href="{% static 'vendor/morrisjs/morris.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap-select.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap-select.min.js' %}"></script>
+
+    <!-- START : DATA TABLE JS -->
+
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <!-- Custom Js -->
+    <!-- <script  src="{% static 'js/admin.js' %}"></script> -->
+    <!-- <script src="{% static 'js/pages/tables/jquery-datatable.js' %}"></script> -->
+
+    <!-- <script src="{% static 'jquery-ui.js' %}"></script> -->
+    <!-- <script src="{% static 'validate_api.js' %}"></script> -->
+    <!-- Custom Js -->
+    <script src="{% static 'js/admin.js' %}"></script>
+    <script src="{% static 'vendor/morrisjs/morris.js' %}"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <!-- Demo Js -->
+    <script src="{% static 'js/demo.js' %}"></script>
+    <script>
+        function UploadProcess() {
+        //Reference the FileUpload element.
+        var fileUpload = document.getElementById("excelFile");
+ 
+        //Validate whether File is valid Excel file.
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+ 
+                //For Browsers other than IE.
+                if (reader.readAsBinaryString) {
+                    reader.onload = function (e) {
+                        GetTableFromExcel(e.target.result);
+                    };
+                    reader.readAsBinaryString(fileUpload.files[0]);
+                } else {
+                    //For IE Browser.
+                    reader.onload = function (e) {
+                        var data = "";
+                        var bytes = new Uint8Array(e.target.result);
+                        for (var i = 0; i < bytes.byteLength; i++) {
+                            data += String.fromCharCode(bytes[i]);
+                        }
+                        GetTableFromExcel(data);
+                    };
+                    reader.readAsArrayBuffer(fileUpload.files[0]);
+                }
+            } else {
+                alert("This browser does not support HTML5.");
+            }
+        } else {
+            alert("Please upload a valid Excel file ends with .XLSX or .xlsx.");
+        }
+    };
+    function GetTableFromExcel(data) {
+        //Read the Excel File data in binary
+        var workbook = XLSX.read(data, {
+            type: 'binary'
+        });
+ 
+        //get the name of First Sheet.
+        var Sheet = workbook.SheetNames[0];
+ 
+        //Read all rows from First Sheet into an JSON array.
+        var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[Sheet]);
+        var headings_temp = Object.keys(excelRows[0]),headings=[];
+        if(headings_temp.length>0){
+            for(let i=0;i<headings_temp.length;i++){
+                headings.push(headings_temp[i]);
+            }
+        }
+ 
+        //Create a HTML Table element.
+        var myTable  = document.createElement("table");
+        myTable.className = "table table-hover";
+        myTable.setAttribute("id", "default-ordering");
+ 
+        //Add the header row.
+        var row = myTable.insertRow(-1);
+
+        headings.forEach((e)=>{
+            var headerCell = document.createElement("TH");
+            headerCell.innerHTML = e;
+            row.appendChild(headerCell);
+        })
+ 
+        //Add the data rows from Excel file.
+        for (var i = 0; i < excelRows.length; i++) {
+            //Add the data row.
+            var row = myTable.insertRow(-1);
+            headings.forEach((e)=>{
+                //Add the data cells.
+                var cell = row.insertCell(-1);
+                cell.innerHTML = excelRows[i][e];
+            })
+        }
+ 
+        var ExcelTable = document.getElementById("ExcelTable");
+        ExcelTable.innerHTML = "";
+        ExcelTable.appendChild(myTable);
+    };
+    </script>
+    </div>
+    </div>
+</body>
+
+
+</html>
