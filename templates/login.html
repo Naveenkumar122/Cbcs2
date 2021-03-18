@@ -60,13 +60,15 @@
                     <div class="wrap-input100 validate-input" data-validate="Enter password" id='log_pass'>
                         <font style="color:white"><img class="avatar" src="{% static 'images/lock1.svg' %}" alt=""
                                 style="width: 20px;position: absolute;top: 20%;"></font>
-                         <input class="input100" type="password" name="pswd" id="pswd" placeholder="Password"
+                         <input class="input100" type="password" name="password" id="pswd" placeholder="Password"
                             tabindex="2" autocomplete="off"> 
                        <span class="focus-input100"></span>
                     </div>
 
                     <div class="contact100-form-checkbox">
-                        <span id='err_msg'></span>
+                        {% for message in messages %}
+                        <h5 class="text-danger text-center">{{ message }}</h5>
+                        {% endfor %}
                     </div>
 
                     <div class="btn btn-group" id="log_btn">
@@ -77,8 +79,8 @@
                     <span id='loadingImg' style="margin-bottom:10px;display:none;">
                         <img src="{%static 'images/loadingImg.gif' %}"></span>
                     <div class="btn btn-group" id="log_btn1">
-                        <button type="button" class="login100-form-btn" name="ForgetButton" id="ForgetButton"
-                            tabindex="4">Forget</button>
+                        <a href="/forgetPass/" type="button" class="login100-form-btn" name="ForgetButton" id="ForgetButton"
+                            tabindex="4">Forget</a>
                     </div>
                     <div id="re_se">
                         <div class="btn btn-group" id="resent" style="display:none">
@@ -110,11 +112,5 @@
     <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
     <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript">
-        document.getElementById("ForgetButton").onclick = function () {
-            location.href = "forgotPassword.php";
-        };
-    </script>
-
 </body>
 </html>

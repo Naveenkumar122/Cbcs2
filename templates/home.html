@@ -14,7 +14,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <!-- end no cache headers -->
 <title>The American College</title>
-{% comment %} <link rel="icon" href="aclogo.ico" type="image/x-icon"> {% endcomment %}
+<!-- <link rel="icon" href="aclogo.ico" type="image/x-icon">  -->
 <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
 <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />  
 <link href="{% static 'css/themes/all-themes.css' %}" rel="stylesheet" />
@@ -94,7 +94,7 @@ function firstCap(str)
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
             <a href="javascript:void(0);" class="navbar-brand"  style="padding-top: 0px;"><img src="{% static 'includes/college logo/aclogo.png' %}" style="width:50px;height:50px;"> </a>
-            <a style="color:#fff;float: left;height: 50px;padding: 15px 15px;font-size: 20px;line-height: 20px;font-weight:bold;  text-decoration: none;font-family: times New roman;text-transform: uppercase;"   href="welcome.php">The American College</a>
+            <a style="color:#fff;float: left;height: 50px;padding: 15px 15px;font-size: 20px;line-height: 20px;font-weight:bold;  text-decoration: none;font-family: times New roman;text-transform: uppercase;"   href="/">The American College</a>
         </div>     
     <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -108,8 +108,8 @@ function firstCap(str)
                 <a id="txt" class="" style="font-size:14px;font-family:Times New Roman;font-weight:bold"><b></b></a>&nbsp;&nbsp;
             </li>                   
             <li class="dropdown">
-                <a href="#" style="padding-top: 0px;">
-                    <img height="25px" title="LOGOUT" src="{% static 'images/arrow.png' %}"%>
+                <a href="/logout/" style="padding-top: 0px;">
+                    <img height="25px" src="{% static 'images/arrow.png' %}"%>
                 </a>                        
             </li>
         </ul>
@@ -154,8 +154,8 @@ function firstCap(str)
                         </a>
                         <ul class="ml-menu">
                         <li>
-                            <a href="/course/" href="javascript:void(0)">Course Add,Edit,Delete</a>
-                            <a id="#">Course Image Add,Edit,Delete</a>
+                            <a href="/course/">Course Add,Edit,Delete</a>
+                            <a href="/coursead/">Course Image Add,Edit,Delete</a>
                             <!--<button onclick="cbcsFunction()">Register</button>-->
                         </li>    
                         </ul>
@@ -164,7 +164,7 @@ function firstCap(str)
                      <a href="javascript:void(0)" class="menu-toggle"> <span>Allocate seats</span> </a>
                      <ul class="ml-menu">
                         <li>
-                            <a href="/addSeats/" href="javascript:void(0)">Add seats</a>
+                            <a href="/addSeats/">Add seats</a>
                         </li>    
                         </ul>
                  </li>
@@ -189,8 +189,8 @@ function firstCap(str)
                         </a>
                         <ul class="ml-menu">
                             <li>
-                            <a id="Change_Pass">Change Password</a>
-                            <a id="/site-settings/">Activate/Deactivate Site</a>
+                            <a href="/changePass1/">Change Password</a>
+                            <a href="/site-settings/">Activate/Deactivate Site</a>
                             <!--<button onclick="cbcsFunction()">Register</button>-->
                             </li>   
                         </ul>
@@ -292,6 +292,9 @@ width:200px;
 				<div class="col-md-3 col-lg-3 " align="center"> 
 		</div>
          <div class=" col-md-9 col-lg-9 "> 
+            {% for message in messages %}
+            <h3 class="text text-center text-danger"><strong>{{ message }}</strong></h3>
+            {% endfor %}
 			<table class="table">
                     <tbody>   
                         <tr> <th align="center" colspan='2'><h5> WELCOME <b><? echo $username ;?></b></h3></th></tr>

@@ -145,9 +145,7 @@ function firstCap(str)
                         </a>
                    <ul class="ml-menu">
                      <li>
-                            <a  href="{% url 'addStudent' %}">Add Student</a>
-                            <a  href="/edit_student/">Edit Student</a>
-                            <!--<button onclick="cbcsFunction()">Register</button>-->
+                        <a  href="{% url 'addStudent' %}">Add Student</a>
                     </li> 
                 </ul>
 
@@ -158,7 +156,7 @@ function firstCap(str)
                         <ul class="ml-menu">
                         <li>
                             <a href="/course/" href="javascript:void(0)">Course Add,Edit,Delete</a>
-                            <a id="#">Course Image Add,Edit,Delete</a>
+                            <a href="/coursead/">Course Image Add,Edit,Delete</a>
                             <!--<button onclick="cbcsFunction()">Register</button>-->
                         </li>    
                         </ul>
@@ -192,8 +190,8 @@ function firstCap(str)
                         </a>
                         <ul class="ml-menu">
                             <li>
-                            <a id="Change_Pass">Change Password</a>
-                            <a id="/site-settings/">Activate/Deactivate Site</a>
+                                <a href="/changePass1/">Change Password</a>
+                                <a href="/site-settings/">Activate/Deactivate Site</a>
                             <!--<button onclick="cbcsFunction()">Register</button>-->
                             </li>   
                         </ul>
@@ -209,48 +207,12 @@ function firstCap(str)
                         <div class="panel panel-primary">
                             <div class="panel-heading">Allocate Seats</div>
                             <div class="container-fluid">
-                           
-                                <form method="POST" action="/search-seats/">
-                                    {% for message in messages %}                 
-                                       <h3 class="text text-center text-danger"><strong>{{ message }}</strong></h3> 
-                                    {% endfor %}
-                                    {% csrf_token %}
-                                    <div class="text-right">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="search" placeholder="Search course code..." />
-                                        <input type="submit" value="search" class="btn btn-primary" />
-                                    </div>
-                                    </div>
-                                </form>
-                        <div class="text-center">
-                            <form method="POST">
-                                {% csrf_token %}
-                                <input type="text" name="id" value="{{course.id}}" hidden/>
-                        
-                                <div class="form-group">
-                                    <label>Course Code</label>
-                                    <select class="form-control" required name="courseCode">
-                                        {% for course in courses %}                                         
-                                             <option value="{{course.id}}">{{  course.courseCode  }}</option>                                         
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <label>Seats</label>
-                                    <input type="number" name="seats" class="form-control"/>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label></label>
-                                    <button type="submit" class="btn btn-primary">Add</button>
-                                </div>
-
-                            </form>
-                        </div>
                         <div class="text-center">
                         <div class="table-responsive md-4 mt-4">
-                            <table class="table table-striped">
+                            {% for message in messages %}                 
+                                <h3 class="text text-center text-danger"><strong>{{ message }}</strong></h3> 
+                            {% endfor %}
+                            <table id="table123" class="table table-striped">
                                  <thead>
                                      <tr>
                                          <td>Course code</td>
@@ -259,20 +221,7 @@ function firstCap(str)
                                      </tr>
                                  </thead>
                                 <tbody>
-                                    {% if course %}
-                                    <tr>
-                                        <td>{{course.courseCode}}</td>
-                                        <td>{{course.seats}}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="/edit_seats/{{course.id}}" class="btn btn-primary">Edit&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                                <a href="/delete_seats/{{course.id}}" class="btn btn-danger">Delete</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    {% else %}
                                     {% for course in courses %}
-                                    {% if course.seats != 0 %}
                                     <tr>
                                         <td>{{course.courseCode}}</td>
                                         <td>{{course.seats}}</td>
@@ -283,9 +232,7 @@ function firstCap(str)
                                             </div>
                                         </td>
                                     </tr>
-                                    {% endif %}
                                     {% endfor %}
-                                    {% endif %}
                                 </tbody>
                             </table>
                         </div>
@@ -302,10 +249,21 @@ function firstCap(str)
             </div>
     
     </section>
-    <!-- ############ script #######-->
-
+     <!-- ############ script #######-->
+    <!-- <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    {% block javascript %}
+    <script>
+        $(document).ready(function () {
+                $('#table123').DataTable();
+            });
+    </script>
+    {% endblock%}
     <!-- Jquery Core Js -->
-    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    
     <!-- Bootstrap Core Js -->
 
     <!-- Slimscroll Plugin Js -->
@@ -323,9 +281,6 @@ function firstCap(str)
     <script src="{% static 'vendor/bootstrap/dist/js/bootstrap-select.min.js' %}"></script>
 
     <!-- START : DATA TABLE JS -->
-
-  
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
     <!-- Custom Js -->
     <!-- <script  src="{% static 'js/admin.js' %}"></script> -->
     <!-- <script src="{% static 'js/pages/tables/jquery-datatable.js' %}"></script> -->
@@ -335,95 +290,8 @@ function firstCap(str)
     <!-- Custom Js -->
     <script src="{% static 'js/admin.js' %}"></script>
     <script src="{% static 'vendor/morrisjs/morris.js' %}"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
     <!-- Demo Js -->
     <script src="{% static 'js/demo.js' %}"></script>
-    <script>
-        function UploadProcess() {
-        //Reference the FileUpload element.
-        var fileUpload = document.getElementById("excelFile");
- 
-        //Validate whether File is valid Excel file.
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
-        if (regex.test(fileUpload.value.toLowerCase())) {
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
- 
-                //For Browsers other than IE.
-                if (reader.readAsBinaryString) {
-                    reader.onload = function (e) {
-                        GetTableFromExcel(e.target.result);
-                    };
-                    reader.readAsBinaryString(fileUpload.files[0]);
-                } else {
-                    //For IE Browser.
-                    reader.onload = function (e) {
-                        var data = "";
-                        var bytes = new Uint8Array(e.target.result);
-                        for (var i = 0; i < bytes.byteLength; i++) {
-                            data += String.fromCharCode(bytes[i]);
-                        }
-                        GetTableFromExcel(data);
-                    };
-                    reader.readAsArrayBuffer(fileUpload.files[0]);
-                }
-            } else {
-                alert("This browser does not support HTML5.");
-            }
-        } else {
-            alert("Please upload a valid Excel file ends with .XLSX or .xlsx.");
-        }
-    };
-    function GetTableFromExcel(data) {
-        //Read the Excel File data in binary
-        var workbook = XLSX.read(data, {
-            type: 'binary'
-        });
- 
-        //get the name of First Sheet.
-        var Sheet = workbook.SheetNames[0];
- 
-        //Read all rows from First Sheet into an JSON array.
-        var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[Sheet]);
-        var headings_temp = Object.keys(excelRows[0]),headings=[];
-        if(headings_temp.length>0){
-            for(let i=0;i<headings_temp.length;i++){
-                headings.push(headings_temp[i]);
-            }
-        }
- 
-        //Create a HTML Table element.
-        var myTable  = document.createElement("table");
-        myTable.className = "table table-hover";
-        myTable.setAttribute("id", "default-ordering");
- 
-        //Add the header row.
-        var row = myTable.insertRow(-1);
-
-        headings.forEach((e)=>{
-            var headerCell = document.createElement("TH");
-            headerCell.innerHTML = e;
-            row.appendChild(headerCell);
-        })
- 
-        //Add the data rows from Excel file.
-        for (var i = 0; i < excelRows.length; i++) {
-            //Add the data row.
-            var row = myTable.insertRow(-1);
-            headings.forEach((e)=>{
-                //Add the data cells.
-                var cell = row.insertCell(-1);
-                cell.innerHTML = excelRows[i][e];
-            })
-        }
- 
-        var ExcelTable = document.getElementById("ExcelTable");
-        ExcelTable.innerHTML = "";
-        ExcelTable.appendChild(myTable);
-    };
-    </script>
     </div>
     </div>
 </body>

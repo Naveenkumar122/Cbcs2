@@ -145,9 +145,7 @@ function firstCap(str)
                         </a>
                    <ul class="ml-menu">
                      <li>
-                            <a  href="{% url 'addStudent' %}">Add Student</a>
-                            <a  href="/edit_student/">Edit Student</a>
-                            <!--<button onclick="cbcsFunction()">Register</button>-->
+                        <a  href="{% url 'addStudent' %}">Add Student</a>
                     </li> 
                 </ul>
 
@@ -158,7 +156,7 @@ function firstCap(str)
                         <ul class="ml-menu">
                         <li>
                             <a href="/course/" href="javascript:void(0)">Course Add,Edit,Delete</a>
-                            <a id="#">Course Image Add,Edit,Delete</a>
+                            <a href="/coursead/">Course Image Add,Edit,Delete</a>
                             <!--<button onclick="cbcsFunction()">Register</button>-->
                         </li>    
                         </ul>
@@ -192,8 +190,8 @@ function firstCap(str)
                         </a>
                         <ul class="ml-menu">
                             <li>
-                            <a id="Change_Pass">Change Password</a>
-                            <a id="/site-settings/">Activate/Deactivate Site</a>
+                                <a href="/changePass1/">Change Password</a>
+                                <a href="/site-settings/">Activate/Deactivate Site</a>
                             <!--<button onclick="cbcsFunction()">Register</button>-->
                             </li>   
                         </ul>
@@ -210,26 +208,18 @@ function firstCap(str)
                             <div class="panel-heading">Edit Seats</div>
                             <div class="container-fluid">
                            
-                                <form method="POST" action="/search-course/">
-                                    {% for message in messages %}                 
-                                       <h3 class="text text-center text-danger"><strong>{{ message }}</strong></h3> 
-                                    {% endfor %}
-                                    {% csrf_token %}
-                                    <div class="text-right">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="search" placeholder="Search course code..." />
-                                        <input type="submit" value="search" class="btn btn-primary" />
-                                    </div>
-                                    </div>
-                                </form>
+
                         <div class="text-center">
                             <form method="POST">
+                                {% for message in messages %}                 
+                                       <h3 class="text text-center text-danger"><strong>{{ message }}</strong></h3> 
+                                    {% endfor %}
                                 {% csrf_token %}
                                 <input type="text" name="id" value="{{course.id}}" hidden/>
                         
                                 <div class="form-group">
                                     <label>Course Code</label>
-                                    <input type="text" name="courseCode" value="{{course.courseCode}}" class="form-control">
+                                    <input type="text" name="courseCode" value="{{course.courseCode}}" class="form-control" disabled>
                                 </div>
                         
                                 <div class="form-group">
@@ -240,6 +230,7 @@ function firstCap(str)
                                 <div class="form-group">
                                     <label></label>
                                     <button type="submit" class="btn btn-primary">Update</button>
+                                    <a href="/addSeats/" class="btn btn-primary">Back</a>
                                 </div>
 
                             </form>
