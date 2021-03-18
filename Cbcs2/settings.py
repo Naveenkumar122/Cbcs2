@@ -131,5 +131,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT    = 587
 EMAIL_HOST_USER     = '18mca14@americancollege.edu.in'
-EMAIL_HOST_PASSWORD = 'Narmatha06' 
+EMAIL_HOST_PASSWORD = '' 
 
